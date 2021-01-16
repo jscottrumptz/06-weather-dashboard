@@ -16,7 +16,7 @@
     </header>
 
     <!-- main -->
-    <div class="container">
+    <div class="m-4 p-4">
 
             <div class="col-md-12">
                 <div class="row">
@@ -27,6 +27,7 @@
                             <input type="search" class="form-control mb-3 ds-input" id="search-input" placeholder="Search for...">
                             <button type="submit" class="btn btn-primary mb-3"><span class="oi oi-magnifying-glass"></span></button>
                         </form>
+                        <!-- search history-->
                         <ul class="list-group">
                             <li class="list-group-item active">Peterburough</li>
                             <li class="list-group-item disabled">Memphis</li>
@@ -37,57 +38,60 @@
                         <div class="card mt-2">
                             <div class="card-body">
                                 <!-- city weather data -->
-                                <h2 class="card-title" id="city-header">City Name (d/a/te)</h2>
-                                <h6 class="card-subtitle mt-3 text-muted">Temperature: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted">Humidity: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted">Wind Speed: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted">UV Index: <span class="px-2 py-1 mb-1 text-light rounded font-weight-normal bg-danger">9.49</span></h6>
+                                <div class="d-flex flex-row ">
+                                    <h2 class="card-title align-self-center" id="city-header">City Name (d/a/te)</h2> 
+                                    <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                </div>
+                                <h6 class="card-subtitle mt-3 text-muted" id="city-temp">Temperature: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted" id="city-humid">Humidity: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted" id="city-wind">Wind Speed: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted" id="city-uv">UV Index: <span id="uv-box" class="px-2 py-1 mb-1 text-light rounded font-weight-normal bg-danger">9.49</span></h6>
                             </div>  
                         </div>
                         <div>
                             <h2 class="card-title mt-3" id="city-header">5-Day Forecast:</h2>
-                            <div class="d-flex flex-row justify-content-between">
+                            <div class="row justify-content-between">
 
-                                <div class="card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body">
+                                <div class="col-md-2 mb-3 card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-body p-1">
                                       <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
                                       <p class="card-text">Temp: </p>
                                       <p class="card-text">Humidity: </p>
                                     </div>
                                 </div>
 
-                                <div class="card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body">
+                                <div class="col-md-2 mb-3 card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-body p-1">
                                       <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                      <img class="align-self-start" src="http://openweathermap.org/img/wn/10d.png" alt="rain">
                                       <p class="card-text">Temp: </p>
                                       <p class="card-text">Humidity: </p>
                                     </div>
                                 </div>
 
-                                <div class="card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body">
+                                <div class="col-md-2 mb-3 card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-body p-1">
                                       <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
                                       <p class="card-text">Temp: </p>
                                       <p class="card-text">Humidity: </p>
                                     </div>
                                 </div>
 
-                                <div class="card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body">
+                                <div class="col-md-2 mb-3 card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-body p-1">
                                       <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
                                       <p class="card-text">Temp: </p>
                                       <p class="card-text">Humidity: </p>
                                     </div>
                                 </div>
 
-                                <div class="card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body">
+                                <div class="col-md-2 mb-3 card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-body p-1">
                                       <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="rain">
+                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
                                       <p class="card-text">Temp: </p>
                                       <p class="card-text">Humidity: </p>
                                     </div>
