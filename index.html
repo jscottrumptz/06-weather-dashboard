@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- css links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+<body>
+    <!-- header -->
+    <header class="bg-dark"> 
+        <h1 class="p-2 text-light text-center h1">Weather Dashboard</h1>
+    </header>
+
+    <!-- main -->
+    <div class="container">
+
+            <div class="col-md-12">
+                <div class="row">
+                    <!-- search section -->
+                    <div class="col-md-3">
+                        <h5>Search for a City:</h5>
+                        <form class="form-inline">
+                            <input type="search" class="form-control mb-3 ds-input" id="search-input" placeholder="Search for...">
+                            <button type="submit" class="btn btn-primary mb-3"><span class="oi oi-magnifying-glass"></span></button>
+                        </form>
+                        <ul class="list-group">
+                            <li class="list-group-item active">Peterburough</li>
+                            <li class="list-group-item disabled">Memphis</li>
+                            <li class="list-group-item disabled">Detroit</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card mt-2">
+                            <div class="card-body">
+                                <!-- city weather data -->
+                                <h2 class="card-title" id="city-header">City Name (d/a/te)</h2>
+                                <h6 class="card-subtitle mt-3 text-muted">Temperature: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted">Humidity: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted">Wind Speed: </h6>
+                                <h6 class="card-subtitle mt-3 text-muted">UV Index: <span class="px-2 py-1 mb-1 text-light rounded font-weight-normal bg-danger">9.49</span></h6>
+                            </div>  
+                        </div>
+                        <div>
+                            <h2 class="card-title mt-3" id="city-header">5-Day Forecast:</h2>
+                            <div class="d-inline-flex">
+
+                                <div class="card text-white bg-primary m-1" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Primary card title</h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary m-1" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Primary card title</h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary m-1" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Primary card title</h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary m-1" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Primary card title</h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+
+                                <div class="card text-white bg-primary m-1" style="max-width: 18rem;">
+                                    <div class="card-body">
+                                      <h5 class="card-title">Primary card title</h5>
+                                      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                                    </div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    <!-- javaScript links -->
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+</html>
+        
