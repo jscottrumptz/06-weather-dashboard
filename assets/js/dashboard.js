@@ -13,7 +13,8 @@ let getCityWeather = function(city) {
         // request was successful
             if (response.ok) {
                 response.json().then(function(data) {
-                    displayWeather(data, city);
+                    // displayWeather(data, city);
+                    console.log(data);
                 });
             } else {
                 alert("Error: " + response.statusText);
@@ -43,8 +44,8 @@ let searchSubmitHandler = function(event) {
 };
 
 let displayWeather = function(weatherData, citySearch) {
-    
+
 }
 
 
-searchFormEl.addEventListener("submit", searchSubmitHandler);
+searchformEl.addEventListener("submit", searchSubmitHandler);
