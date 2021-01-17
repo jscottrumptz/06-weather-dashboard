@@ -75,10 +75,9 @@ let displayWeather = function(weatherData) {
                     $("#uv-box").css("background-color", "#f7e401")
                 } else {
                     $("#uv-box").css("background-color", "#299501")
-                }
-                
+                }      
             })
-        })
+        });
 
     // 5-day api call
     fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + weatherData.name + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial")
@@ -92,10 +91,21 @@ let displayWeather = function(weatherData) {
                     console.log(data.list[i].main.temp);
                     console.log(data.list[i].main.humidity);
 
-                    $("#five-day").append('<div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;"><div class="card-body p-1"><h5 class="card-title">d/a/te</h5><img src="http://openweathermap.org/img/wn/10d.png" alt="rain"><p class="card-text">Temp: </p><p class="card-text">Humidity: </p></div></div>')
-                }
-        })
-    });
+                    let fiveDayCard =`
+                    <div class="col-md-2 m-2 py-3 card text-white bg-primary">
+                        <div class="card-body p-1">
+                            <h5 class="card-title">` + dayjs(data.list[i].dt * 1000).format("MM/DD/YYYY") + `</h5>
+                            <img src="http://openweathermap.org/img/wn/` + data.list[i].weather[0].icon + `.png" alt="rain">
+                            <p class="card-text">Temp: ` + data.list[i].main.temp + `</p>
+                            <p class="card-text">Humidity: ` + data.list[i].main.humidity + `</p>
+                        </div>
+                    </div>
+                    `;
+
+                    $("#five-day").append(fiveDayCard);
+               }
+            })
+        });
 
     citySearchHistory(weatherData.name);
 };
