@@ -1,5 +1,4 @@
-// let searchInputEl = document.querySelector("#cityname");
-let prevSearchListEl = document.querySelector("#search-history");
+let searchHistory = []
 
 let getCityWeather = function(city) {
     // format the OpenWeather api url
@@ -13,7 +12,6 @@ let getCityWeather = function(city) {
             if (response.ok) {
                 response.json().then(function(data) {
                     displayWeather(data);
-                    console.log(data);
                 });
             } else {
                 alert("Error: " + response.statusText);
@@ -46,13 +44,14 @@ let searchSubmitHandler = function(event) {
 };
 
 let citySearchHistory = function (city) {
-
+    
+    $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + city + "'>" + city + "</a>")
 };
 
 let displayWeather = function(weatherData) {
 
     // format and display the values
-    $("#main-city-name").text(weatherData.name + " (" + dayjs(weatherData.dt * 1000).format("MM/DD/YYYY") + ") ").append(` <img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png"></img>`);
+    $("#main-city-name").text(weatherData.name + " (" + dayjs(weatherData.dt * 1000).format("MM/DD/YYYY") + ") ").append(`<img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png"></img>`);
     $("#main-city-temp").text("Temperature: " + weatherData.main.temp.toFixed(1) + "°F");
     $("#main-city-humid").text("Humidity: " + weatherData.main.humidity + "%");
     $("#main-city-wind").text("Wind Speed: " + weatherData.wind.speed.toFixed(1) + " mph");
@@ -64,7 +63,6 @@ let displayWeather = function(weatherData) {
 
                 // display the uv index value
                 $("#uv-box").text(data.value);
-                console.log(data);
 
                 // highlight the value using the EPA's UV Index Scale colors
                 if(data.value >= 11) {
@@ -81,7 +79,13 @@ let displayWeather = function(weatherData) {
                 
         })
     })
+
+    citySearchHistory(weatherData.name);
 };
 
 // event handlers
-$("#search-form").submit(searchSubmitHandler)
+$("#search-form").submit(searchSubmitHandler);
+$("#search-history").on("click", function(event){
+    let prevCity = $(event.target).closest("a").attr("id");
+    getCityWeather(prevCity);
+});

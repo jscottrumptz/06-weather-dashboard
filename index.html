@@ -17,90 +17,95 @@
 
     <!-- main -->
     <div class="m-4 p-4">
+        <div class="col-md-12">
+            <div class="row">
 
-            <div class="col-md-12">
-                <div class="row">
-                    <!-- search section -->
-                    <div class="col-md-3">
-                        <h5>Search for a City:</h5>
-                        <form class="form-inline" id="search-form">
-                            <input type="search" class="form-control mb-3 ds-input" id="cityname" placeholder="Enter city name...">
-                            <button type="submit" class="btn btn-primary mb-3"><span class="oi oi-magnifying-glass"></span></button>
-                        </form>
-                        <!-- search history-->
-                        <ul class="list-group" id="search-history">
-                            <li class="list-group-item active">Peterburough</li>
-                            <li class="list-group-item disabled">Memphis</li>
-                            <li class="list-group-item disabled">Detroit</li>
-                        </ul>
-                    </div>
-                    <div class="col-md-9">
-                        <div class="card mt-2">
-                            <div class="card-body">
-                                <!-- city weather data -->
-                                <div class="d-flex flex-row ">
-                                    <h2 class="card-title align-self-center" id="main-city-name">City Name</h2> 
-                                </div>
-                                <h6 class="card-subtitle text-muted" id="main-city-temp">Temperature: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted" id="main-city-humid">Humidity: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted" id="main-city-wind">Wind Speed: </h6>
-                                <h6 class="card-subtitle mt-3 text-muted" id="main-city-uv">UV Index: <span id="uv-box" class="px-2 py-1 mb-1 text-light rounded font-weight-normal">9.49</span></h6>
-                            </div>  
-                        </div>
-                        <div>
-                            <h2 class="card-title mt-3" id="city-header">5-Day Forecast:</h2>
-                            <div class="row justify-content-between">
+                <!-- search section -->
+                <div class="col-md-3">
 
-                                <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body p-1">
-                                      <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
-                                      <p class="card-text">Temp: </p>
-                                      <p class="card-text">Humidity: </p>
-                                    </div>
-                                </div>
+                    <!-- search form -->
+                    <h5>Search for a City:</h5>
+                    <form class="form-inline" id="search-form">
+                        <input type="search" class="form-control mb-3 ds-input" id="cityname" placeholder="Enter city name...">
+                        <button type="submit" class="btn btn-primary mb-3"><span class="oi oi-magnifying-glass"></span></button>
+                    </form>
 
-                                <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body p-1">
-                                      <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
-                                      <p class="card-text">Temp: </p>
-                                      <p class="card-text">Humidity: </p>
-                                    </div>
-                                </div>
+                    <!-- search history-->
+                    <ul class="list-group" id="search-history">
+                    </ul>
 
-                                <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body p-1">
-                                      <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
-                                      <p class="card-text">Temp: </p>
-                                      <p class="card-text">Humidity: </p>
-                                    </div>
-                                </div>
+                </div>
 
-                                <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body p-1">
-                                      <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
-                                      <p class="card-text">Temp: </p>
-                                      <p class="card-text">Humidity: </p>
-                                    </div>
-                                </div>
+                <!-- results section -->
+                <div class="col-md-9">
 
-                                <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
-                                    <div class="card-body p-1">
-                                      <h5 class="card-title">d/a/te</h5>
-                                      <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
-                                      <p class="card-text">Temp: </p>
-                                      <p class="card-text">Humidity: </p>
-                                    </div>
-                                </div>
-                                
+                    <!-- city weather data -->
+                    <div class="card mt-2">
+                        <div class="card-body">
+                            <div class="d-flex flex-row ">
+                                <h2 class="card-title align-self-center" id="main-city-name">City Name</h2> 
                             </div>
+                            <h6 class="card-subtitle text-muted" id="main-city-temp">Temperature: </h6>
+                            <h6 class="card-subtitle mt-3 text-muted" id="main-city-humid">Humidity: </h6>
+                            <h6 class="card-subtitle mt-3 text-muted" id="main-city-wind">Wind Speed: </h6>
+                            <h6 class="card-subtitle mt-3 text-muted" id="main-city-uv">UV Index: <span id="uv-box" class="px-2 py-1 mb-1 text-light rounded font-weight-normal">9.49</span></h6>
+                        </div>  
+                    </div>
+                    
+                    <!-- 5-day forecast -->
+                    <div>
+                        <h2 class="card-title mt-3" id="city-header">5-Day Forecast:</h2>
+                        <div class="row justify-content-between">
+
+                            <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title">d/a/te</h5>
+                                    <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
+                                    <p class="card-text">Temp: </p>
+                                    <p class="card-text">Humidity: </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title">d/a/te</h5>
+                                    <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
+                                    <p class="card-text">Temp: </p>
+                                    <p class="card-text">Humidity: </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title">d/a/te</h5>
+                                    <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
+                                    <p class="card-text">Temp: </p>
+                                    <p class="card-text">Humidity: </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title">d/a/te</h5>
+                                    <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
+                                    <p class="card-text">Temp: </p>
+                                    <p class="card-text">Humidity: </p>
+                                </div>
+                            </div>
+
+                            <div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;">
+                                <div class="card-body p-1">
+                                    <h5 class="card-title">d/a/te</h5>
+                                    <img src="http://openweathermap.org/img/wn/10d.png" alt="rain">
+                                    <p class="card-text">Temp: </p>
+                                    <p class="card-text">Humidity: </p>
+                                </div>
+                            </div>           
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
     </div>
     
     <!-- javaScript links -->
