@@ -4,7 +4,7 @@ let prevSearchListEl = document.querySelector("#search-history");
 
 let getCityWeather = function(city) {
     // format the OpenWeather api url
-    let apiUrl = "api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a";
+    let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a";
 
     // make a request to the url
     fetch(apiUrl)
