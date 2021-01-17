@@ -77,8 +77,25 @@ let displayWeather = function(weatherData) {
                     $("#uv-box").css("background-color", "#299501")
                 }
                 
+            })
         })
-    })
+
+    // 5-day api call
+    fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + weatherData.name + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial")
+        .then(function(response) {
+            response.json().then(function(data) {
+                console.log(data);
+
+                for(i = 7; i <= data.list.length; i += 8){
+                    console.log(dayjs(data.list[i].dt * 1000).format("MM/DD/YYYY"));
+                    console.log(data.list[i].weather[0].icon)
+                    console.log(data.list[i].main.temp);
+                    console.log(data.list[i].main.humidity);
+
+                    $("#five-day").append('<div class="col-md-2 m-2 card text-white bg-primary" style="max-width: 18rem;"><div class="card-body p-1"><h5 class="card-title">d/a/te</h5><img src="http://openweathermap.org/img/wn/10d.png" alt="rain"><p class="card-text">Temp: </p><p class="card-text">Humidity: </p></div></div>')
+                }
+        })
+    });
 
     citySearchHistory(weatherData.name);
 };
