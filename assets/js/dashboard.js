@@ -1,5 +1,7 @@
+// array to hold the users search history
 let searchHistory = []
 
+// api call to openweathermap.org
 let getCityWeather = function(city) {
     // format the OpenWeather api url
     let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial";
@@ -13,6 +15,7 @@ let getCityWeather = function(city) {
                 response.json().then(function(data) {
                     displayWeather(data);
                 });
+            // request fails
             } else {
                 alert("Error: " + response.statusText);
             }
@@ -24,6 +27,7 @@ let getCityWeather = function(city) {
         })
 };
 
+// function to handle city search form submit
 let searchSubmitHandler = function(event) {
     // stop page from refreshing
     event.preventDefault();
@@ -43,6 +47,7 @@ let searchSubmitHandler = function(event) {
     }
 };
 
+// function to display the information collected from openweathermap.org
 let displayWeather = function(weatherData) {
 
     // format and display the values
@@ -51,7 +56,7 @@ let displayWeather = function(weatherData) {
     $("#main-city-humid").text("Humidity: " + weatherData.main.humidity + "%");
     $("#main-city-wind").text("Wind Speed: " + weatherData.wind.speed.toFixed(1) + " mph");
 
-    // uv api call
+    // use lat & lon to make the uv api call
     fetch("https://api.openweathermap.org/data/2.5/uvi?lat=" + weatherData.coord.lat + "&lon="+ weatherData.coord.lon + "&appid=ce39e7239416ad754359ca762d28521a")
         .then(function(response) {
             response.json().then(function(data) {
@@ -74,16 +79,18 @@ let displayWeather = function(weatherData) {
             })
         });
 
-    // 5-day api call
+    // five-day api call
     fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + weatherData.name + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial")
         .then(function(response) {
             response.json().then(function(data) {
-                console.log(data);
 
+                // clear any previous entries in the five-day forecast
                 $("#five-day").empty();
 
+                // get every 8th value (24hours) in the returned array from the api call
                 for(i = 7; i <= data.list.length; i += 8){
 
+                    // insert data into my day forecast card template
                     let fiveDayCard =`
                     <div class="col-md-2 m-2 py-3 card text-white bg-primary">
                         <div class="card-body p-1">
@@ -95,14 +102,18 @@ let displayWeather = function(weatherData) {
                     </div>
                     `;
 
+                    // append the day to the five-day forecast
                     $("#five-day").append(fiveDayCard);
                }
             })
         });
 
+    // save to the search history using the api's name value for consistancy
+    // this also keeps searches that did not return a result from populating the array
     saveSearchHistory(weatherData.name);
 };
 
+// function to save the city search history to local storage
 let saveSearchHistory = function (city) {
     if(!searchHistory.includes(city)){
         searchHistory.push(city);
@@ -112,6 +123,7 @@ let saveSearchHistory = function (city) {
     // save the searchHistory array to local storage
     localStorage.setItem("weatherSearchHistory", JSON.stringify(searchHistory));
 
+    // display the searchHistory array
     loadSearchHistory();
 };
 
@@ -124,12 +136,13 @@ let loadSearchHistory = function() {
         searchHistory = []
     }
 
+    // clear any previous values from th search-history ul
     $("#search-history").empty();
 
-    // for loop that will run through all the citys in the array
+    // for loop that will run through all the citys found in the array
     for(i = 0 ; i < searchHistory.length ;i++) {
 
-        // load the saved data
+        // add the city as a link, set it's id, and append it to the search-history ul
         $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + searchHistory[i] + "'>" + searchHistory[i] + "</a>");
     }
   };
@@ -140,6 +153,8 @@ loadSearchHistory();
 // event handlers
 $("#search-form").submit(searchSubmitHandler);
 $("#search-history").on("click", function(event){
+    // get the links id value
     let prevCity = $(event.target).closest("a").attr("id");
+    // pass it's id value to the getCityWeather function
     getCityWeather(prevCity);
 });
