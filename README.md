@@ -18,12 +18,12 @@ Search the current and future weather conditions for multiple cities.
 * JSON
 * jQuery
 * Bootstrap
-*  OpenWeather API
+* OpenWeather API
 
 ## Website
 https://jscottrumptz.github.io/06-weather-dashboard/
 
-[image coming soon]
+![image](https://user-images.githubusercontent.com/74981245/104877420-65b2b180-591f-11eb-810b-994d0ee643cc.png)
 
 ## Contribution
 Made with ❤️ by J Scott Rumptz
