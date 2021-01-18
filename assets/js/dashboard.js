@@ -44,8 +44,11 @@ let searchSubmitHandler = function(event) {
 };
 
 let citySearchHistory = function (city) {
-    
-    $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + city + "'>" + city + "</a>")
+    if(!searchHistory.includes(city)){
+        searchHistory.push(city);
+        $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + city + "'>" + city + "</a>")
+    } 
+    console.log(searchHistory);
 };
 
 let displayWeather = function(weatherData) {
@@ -85,12 +88,10 @@ let displayWeather = function(weatherData) {
             response.json().then(function(data) {
                 console.log(data);
 
-                for(i = 7; i <= data.list.length; i += 8){
-                    console.log(dayjs(data.list[i].dt * 1000).format("MM/DD/YYYY"));
-                    console.log(data.list[i].weather[0].icon)
-                    console.log(data.list[i].main.temp);
-                    console.log(data.list[i].main.humidity);
+                $("#five-day").empty();
 
+                for(i = 7; i <= data.list.length; i += 8){
+                    
                     let fiveDayCard =`
                     <div class="col-md-2 m-2 py-3 card text-white bg-primary">
                         <div class="card-body p-1">
