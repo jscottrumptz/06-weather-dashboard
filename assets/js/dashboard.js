@@ -43,14 +43,6 @@ let searchSubmitHandler = function(event) {
     }
 };
 
-let citySearchHistory = function (city) {
-    if(!searchHistory.includes(city)){
-        searchHistory.push(city);
-        $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + city + "'>" + city + "</a>")
-    } 
-    console.log(searchHistory);
-};
-
 let displayWeather = function(weatherData) {
 
     // format and display the values
@@ -91,7 +83,7 @@ let displayWeather = function(weatherData) {
                 $("#five-day").empty();
 
                 for(i = 7; i <= data.list.length; i += 8){
-                    
+
                     let fiveDayCard =`
                     <div class="col-md-2 m-2 py-3 card text-white bg-primary">
                         <div class="card-body p-1">
@@ -108,8 +100,42 @@ let displayWeather = function(weatherData) {
             })
         });
 
-    citySearchHistory(weatherData.name);
+    saveSearchHistory(weatherData.name);
 };
+
+let saveSearchHistory = function (city) {
+    if(!searchHistory.includes(city)){
+        searchHistory.push(city);
+        $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + city + "'>" + city + "</a>")
+    } 
+
+    // save the searchHistory array to local storage
+    localStorage.setItem("weatherSearchHistory", JSON.stringify(searchHistory));
+
+    loadSearchHistory();
+};
+
+// function to load saved city search history from local storage
+let loadSearchHistory = function() {
+    searchHistory = JSON.parse(localStorage.getItem("weatherSearchHistory"));
+  
+    // if nothing in localStorage, create an empty searchHistory array
+    if (!searchHistory) {
+        searchHistory = []
+    }
+
+    $("#search-history").empty();
+
+    // for loop that will run through all the citys in the array
+    for(i = 0 ; i < searchHistory.length ;i++) {
+
+        // load the saved data
+        $("#search-history").append("<a href='#' class='list-group-item list-group-item-action' id='" + searchHistory[i] + "'>" + searchHistory[i] + "</a>");
+    }
+  };
+
+// load search history from local storage
+loadSearchHistory();
 
 // event handlers
 $("#search-form").submit(searchSubmitHandler);
