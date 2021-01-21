@@ -168,8 +168,6 @@ if (lastCitySearched != ""){
     getCityWeather(lastCitySearched);
 }
 
-// load the lastCitySearched
-
 // event handlers
 $("#search-form").submit(searchSubmitHandler);
 $("#search-history").on("click", function(event){
