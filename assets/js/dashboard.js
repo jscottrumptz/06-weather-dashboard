@@ -1,5 +1,6 @@
 // array to hold the users search history
 let searchHistory = []
+let lastCitySearched = ""
 
 // api call to openweathermap.org
 let getCityWeather = function(city) {
@@ -39,6 +40,10 @@ let searchSubmitHandler = function(event) {
     if(cityName) {
         // pass the value to getCityWeather function
         getCityWeather(cityName);
+
+        // save the last city searched
+        lastCitySearched = cityName;
+
         // clear the search input
         $("#cityname").val("");
     } else {
@@ -123,6 +128,9 @@ let saveSearchHistory = function (city) {
     // save the searchHistory array to local storage
     localStorage.setItem("weatherSearchHistory", JSON.stringify(searchHistory));
 
+    // save the lastCitySearched to local storage
+    localStorage.setItem("lastCitySearched", JSON.stringify(lastCitySearched));
+
     // display the searchHistory array
     loadSearchHistory();
 };
@@ -130,10 +138,15 @@ let saveSearchHistory = function (city) {
 // function to load saved city search history from local storage
 let loadSearchHistory = function() {
     searchHistory = JSON.parse(localStorage.getItem("weatherSearchHistory"));
+    lastCitySearched = JSON.parse(localStorage.getItem("lastCitySearched"));
   
-    // if nothing in localStorage, create an empty searchHistory array
+    // if nothing in localStorage, create an empty searchHistory array and an empty lastCitySearched string
     if (!searchHistory) {
         searchHistory = []
+    }
+
+    if (!lastCitySearched) {
+        lastCitySearched = ""
     }
 
     // clear any previous values from th search-history ul
@@ -149,6 +162,13 @@ let loadSearchHistory = function() {
 
 // load search history from local storage
 loadSearchHistory();
+
+// start page with the last city searched if there is one
+if (lastCitySearched != ""){
+    getCityWeather(lastCitySearched);
+}
+
+// load the lastCitySearched
 
 // event handlers
 $("#search-form").submit(searchSubmitHandler);
