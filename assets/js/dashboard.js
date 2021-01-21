@@ -41,9 +41,6 @@ let searchSubmitHandler = function(event) {
         // pass the value to getCityWeather function
         getCityWeather(cityName);
 
-        // save the last city searched
-        lastCitySearched = cityName;
-
         // clear the search input
         $("#cityname").val("");
     } else {
@@ -56,7 +53,7 @@ let searchSubmitHandler = function(event) {
 let displayWeather = function(weatherData) {
 
     // format and display the values
-    $("#main-city-name").text(weatherData.name + " (" + dayjs(weatherData.dt * 1000).format("MM/DD/YYYY") + ") ").append(`<img src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png"></img>`);
+    $("#main-city-name").text(weatherData.name + " (" + dayjs(weatherData.dt * 1000).format("MM/DD/YYYY") + ") ").append(`<img src="https://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png"></img>`);
     $("#main-city-temp").text("Temperature: " + weatherData.main.temp.toFixed(1) + "°F");
     $("#main-city-humid").text("Humidity: " + weatherData.main.humidity + "%");
     $("#main-city-wind").text("Wind Speed: " + weatherData.wind.speed.toFixed(1) + " mph");
@@ -100,7 +97,7 @@ let displayWeather = function(weatherData) {
                     <div class="col-md-2 m-2 py-3 card text-white bg-primary">
                         <div class="card-body p-1">
                             <h5 class="card-title">` + dayjs(data.list[i].dt * 1000).format("MM/DD/YYYY") + `</h5>
-                            <img src="http://openweathermap.org/img/wn/` + data.list[i].weather[0].icon + `.png" alt="rain">
+                            <img src="https://openweathermap.org/img/wn/` + data.list[i].weather[0].icon + `.png" alt="rain">
                             <p class="card-text">Temp: ` + data.list[i].main.temp + `</p>
                             <p class="card-text">Humidity: ` + data.list[i].main.humidity + `</p>
                         </div>
@@ -113,9 +110,14 @@ let displayWeather = function(weatherData) {
             })
         });
 
+    // save the last city searched
+    lastCitySearched = weatherData.name;
+
     // save to the search history using the api's name value for consistancy
     // this also keeps searches that did not return a result from populating the array
     saveSearchHistory(weatherData.name);
+
+    
 };
 
 // function to save the city search history to local storage
@@ -167,8 +169,6 @@ loadSearchHistory();
 if (lastCitySearched != ""){
     getCityWeather(lastCitySearched);
 }
-
-// load the lastCitySearched
 
 // event handlers
 $("#search-form").submit(searchSubmitHandler);
