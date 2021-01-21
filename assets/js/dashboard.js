@@ -41,9 +41,6 @@ let searchSubmitHandler = function(event) {
         // pass the value to getCityWeather function
         getCityWeather(cityName);
 
-        // save the last city searched
-        lastCitySearched = cityName;
-
         // clear the search input
         $("#cityname").val("");
     } else {
@@ -113,9 +110,14 @@ let displayWeather = function(weatherData) {
             })
         });
 
+    // save the last city searched
+    lastCitySearched = weatherData.name;
+
     // save to the search history using the api's name value for consistancy
     // this also keeps searches that did not return a result from populating the array
     saveSearchHistory(weatherData.name);
+
+    
 };
 
 // function to save the city search history to local storage
